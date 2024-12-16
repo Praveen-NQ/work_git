@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-sxsacwedawxacw
-=======
-sxsacwedawxacw
->>>>>>> 6616a6d (updated docs)
