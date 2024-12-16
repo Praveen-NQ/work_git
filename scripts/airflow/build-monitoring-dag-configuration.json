@@ -1,0 +1,44 @@
+{
+    "airflow": {
+        "scheduler": {
+            "depends_on_past": "False",
+            "pool": "None",
+            "priority_weight": 100,
+            "queue": "analytics",
+            "schedule_interval": "* */1 * * *",
+            "start_date": {
+                "day": 19,
+                "hour": 6,
+                "minute": 3,
+                "month": 1,
+                "second": 43,
+                "year": 2023
+            },
+            "type": "airflow",
+            "version": "5.0.1"
+        }
+    },
+    "applications": [
+        {
+            "application_name": "spark-post-processor",
+            "build_number": "41"
+        },
+        {
+            "application_name": "spark-streaming-analytic-service",
+            "build_number": "30"
+        },
+        {
+            "application_name": "data-replication-tool",
+            "build_number": "45"
+        },
+        {
+            "application_name": "spark-realtime-streaming-service",
+            "build_number": "1"
+        }
+    ],
+    "catchup": "False",
+    "dag_concurrency": 1,
+    "dag_name": "Application-Build-Monitor",
+    "max_active_runs": 1,
+    "namespace": "Platform_Services",
+    "tenant": "PWR_DATAFABRIC"

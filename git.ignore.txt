@@ -1,0 +1,7 @@
+*.exe
+.terraform*
+*.tfstate*
+*.terraform*
+*\.terraform
+*.terraform.lock*
+

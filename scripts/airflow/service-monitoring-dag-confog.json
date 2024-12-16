@@ -1,0 +1,75 @@
+#json file
+{
+    "airflow": {
+        "scheduler": {
+            "depends_on_past": "False",
+            "pool": "None",
+            "priority_weight": 100,
+            "queue": "analytics",
+            "schedule_interval": "None",
+            "start_date": {
+                "day": 10,
+                "hour": 22,
+                "minute": 8,
+                "month": 5,
+                "second": 22,
+                "year": 2021
+            },
+            "type": "airflow",
+            "version": "5.0.1"
+        }
+    },
+    "application_name": "spark-realtime-streaming-service",
+    "application_version": "1.0.0",
+    "build_number": "1",
+    "dag_concurrency": 1,
+    "deployment_name": "Application-Monitor",
+    "genie": {
+        "cluster_tags": [
+            "emr.cluster.role:emr-analytic-services"
+        ],
+        "command_arguments": "--files log4j-driver.properties,log4j-executor.properties --jars spark-realtime-streaming-service-1.0.0-fat.jar --class com.ge.pd.StreamingServiceMain spark-realtime-streaming-service-1.0.0-fat.jar",
+        "command_tags": [
+            "type:spark-submit",
+            "ver:2.3.0",
+            "runtime:power-streaming-runtime",
+            "power-framework-ver:latest"
+        ],
+        "genie_application_dependencies": [
+            "/predix/datafabric/power/spark-realtime-streaming-service/latest/lib/spark-realtime-streaming-service-1.0.0-fat.jar",
+            "/predix/datafabric/power/spark-realtime-streaming-service/latest/conf/app.properties",
+            "/predix/datafabric/power/spark-realtime-streaming-service/latest/conf/log4j-driver.properties",
+            "/predix/datafabric/power/spark-realtime-streaming-service/latest/conf/log4j-executor.properties"
+        ],
+        "genie_conn_id": "genie",
+        "genie_retries": 0,
+        "genie_retry_interval_seconds": 2,
+        "job_timeout_seconds": 72000000,
+        "spark_configs": {
+            "spark.driver.extraClassPath": "/predix/datafabric/power/aws/1.11.360/*:/predix/datafabric/power/aws/1.11.272/*:/predix/genie/emr/emr-5.13.0/jars/hadoop-lzo/lib/*:/predix/genie/emr/emr-5.13.0/jars/hadoop/hadoop-aws.jar:/predix/genie/emr/emr-5.13.0/aws/emr/emrfs/conf:/predix/genie/emr/emr-5.13.0/aws/emr/emrfs/lib/*:/predix/genie/emr/emr-5.13.0/aws/emr/s3-dist-cp/lib/*",
+            "spark.driver.extraJavaOptions": "-Dlog4j.configuration=file:///predix/datafabric/power/spark-realtime-streaming-service/latest/conf/log4j-driver.properties",
+            "spark.driver.maxResultSize": "0",
+            "spark.driver.memory": "4G",
+            "spark.dynamicAllocation.enabled": "false",
+            "spark.eventLog.enabled": "false",
+            "spark.executor.cores": "5",
+            "spark.executor.extraClassPath": "/predix/datafabric/power/aws/1.11.360/*:/predix/datafabric/power/aws/1.11.272/*",
+            "spark.executor.extraJavaOptions": "'-XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:ParallelGCThreads=24 -XX:ConcGCThreads=8 -Dlog4j.configuration=log4j-executor.properties'",
+            "spark.executor.instances": "8",
+            "spark.executor.memory": "8G",
+            "spark.hadoop.fs.s3.consistent": "false",
+            "spark.hadoop.mapreduce.fileoutputcommitter.algorithm.version": "2",
+            "spark.port.maxRetries": "50",
+            "spark.serializer": "org.apache.spark.serializer.KryoSerializer",
+            "spark.speculation": "false",
+            "spark.streaming.backpressure.enabled": "true",
+            "spark.streaming.backpressure.pid.minRate": "10",
+            "spark.streaming.receiver.maxRate": "50",
+            "spark.streaming.receiver.writeAheadLog.enable": "false",
+            "spark.streaming.stopGracefullyOnShutdown": "true",
+            "spark.yarn.executor.memoryOverhead": "1G"
+        }
+    },
+    "max_active_runs": 1,
+    "namespace": "Platform_Services",
+    "tenant": "PWR_DATAFABRIC"

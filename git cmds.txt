@@ -1,0 +1,21 @@
+git init
+git remote add origin https://github.com/Praveengoud25/Work_Sample.git
+git pull origin main
+git branch
+git branch -M main
+git branch
+git status
+git add .
+git commit -m "initial docs"
+git push -u origin main
+
+
+git config --global user.mail "nprav8125@gmail.com"
+git config --global user.name "praveengoud25"
+
+git restore --staged .
+
+
+git remote add origin https://github.com/Praveengoud25/work_git.git
+git branch -M main
+git push -u origin main

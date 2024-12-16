@@ -1,0 +1,11 @@
+Tf IAC tool. code process
+
+first we need to add a provider.
+next the login access to it.
+next what all resources are allready there in cloud by using "data"
+next what all resources need to be created by using " resource"
+
+as we cant give all details in main.tf we use variable.tf or terraform.tfvars file these variable files should be created at the time of execution by the users so that main.tf can be re-used multiple times.
+
+once the files are ready do the terraform init, plan, apply .
+after doing apply and the execution is done we get some files in our pc "tfstate" this file is used to modify the resurce and even destroy, so this file is very important for us.
