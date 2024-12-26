@@ -1,0 +1,17 @@
+//
+provider "aws" {
+  region = "us-east-1"
+  profile = "default"
+}
+
+import {
+  id = "install-scripts1"               //Resource name
+
+  to = aws_s3_bucket.scripts_bucket     //Resource type and conical name
+}
+
+//arn:aws:s3:::install-scripts1
+//terraform plan -generate-config-out="install-scripts_s3.tf"
+//terraform import aws_s3_bucket.scripts_bucket install-scripts1
+
+//

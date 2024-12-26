@@ -9,3 +9,53 @@ as we cant give all details in main.tf we use variable.tf or terraform.tfvars fi
 
 once the files are ready do the terraform init, plan, apply .
 after doing apply and the execution is done we get some files in our pc "tfstate" this file is used to modify the resurce and even destroy, so this file is very important for us.
+
+TF migrtion process.
+
+first prepare config file by using example from  "work_git\terraform\S3_import\install-scripts_s3"
+
+terraform plan -generate-config-out="install-scripts_s3.tf"
+
+terraform import aws_s3_bucket.scripts_bucket install-scripts1
+
+terraform plan //when run this command it should as "No changes. Your infrastructure matches the configuration."
+
+then the migration is as expected
+
+
+-----------
+
+Module's
+
+in TF one script where it can be re-used in simple ways is called as module. for that we need to convert 
+code to vairable way.
+
+so main config file will have noting to change and wont create any issue.
+
+once config file is done we can call it from any config file with module, building block.
+
+Ex: 
+1. terraform/Ec2/main.tf        = whole script to create a Ec2
+2. terraform/Ec2/some_type/     = this is without script where we use module building block
+
+in 2. folder create a main.tf, variables.tf, terraform.tfvars file 
+
+in main.tf file 
+write as follows
+
+//
+module "Ec2" {
+  source = "terraform/Ec2/"
+}
+// this will pull details from above folder to create EC2
+
+update variables.tf, terraform.tfvars files according to ur need and run plan, apply. this will create the ec2.
+
+if we need to pull module from Git repo use this way
+
+module "Ec2" {
+  source = "git::https://github.com/Praveengoud25/work_git.git//terraform/Ec2_module"
+}
+
+copy the repo url, after .git add // and add folder_path
+

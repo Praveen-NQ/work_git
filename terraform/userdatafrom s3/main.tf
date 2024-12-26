@@ -7,8 +7,8 @@ provider "aws" {
 
 data "aws_s3_object" "user_data" {
   bucket = "install-scripts1"
-  key = "cron_kill.sh"
-}
+  key = "s3://install-scripts1/cron_kill.sh"
+}  
 
 resource "aws_security_group_rule" "ingress_rules" {
   count = length(var.ingress_rules)
@@ -21,13 +21,13 @@ resource "aws_security_group_rule" "ingress_rules" {
   description       = var.ingress_rules[count.index].description
 }
 
-resource "aws_instance" "terraform_saample"  {
+resource "aws_instance" "terraform_ec2"  {
   associate_public_ip_address     = true
   count                           = var.number_of_instances
   ami                             = var.ami
   instance_type                   = var.itype
   subnet_id                       = var.subnet
-  #security_groups                 = var.securitygroupid
+  security_groups                 = var.securitygroupid
   key_name                        = var.pem_file
   user_data                       = data.aws_s3_object.user_data.body
   iam_instance_profile            = "allows3"
