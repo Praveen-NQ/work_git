@@ -2,3 +2,5 @@
 *\.terraform
 *.terraform*
 *.exe
+*terraform.tfstate*
+terraform.tfstate*
