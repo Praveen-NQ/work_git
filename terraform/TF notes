@@ -22,9 +22,6 @@ terraform plan //when run this command it should as "No changes. Your infrastruc
 
 then the migration is as expected
 
-
------------
-
 Module's
 
 in TF one script where it can be re-used in simple ways is called as module. for that we need to convert 
@@ -58,4 +55,14 @@ module "Ec2" {
 }
 
 copy the repo url, after .git add // and add folder_path
+ 
+------------
+
+* tf -chdir 
+this is used to open project folder from diffrent folder and run tf commands
+
+terraform.exe -chdir=foldername cmd // this will run tf cmd on any folder from tf parent folder.
+mostly this way is used 
+
+
 
