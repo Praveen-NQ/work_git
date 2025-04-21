@@ -4,3 +4,5 @@
 *.exe
 *terraform.tfstate*
 terraform.tfstate*
+*.csv
+.DS_Store*
