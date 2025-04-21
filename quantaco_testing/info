@@ -1,0 +1,39 @@
+#table columns
+
+TransactionDate, TransID, TenderDescription, SalesAmount, BankingAmount
+
+
+"""
+
+"""
+
+
+Parsed data type: <class 'dict'>
+First few values: {'venueName': 'Royal Oak Double Bay', 'data': [{'TransactionDate': '2025-04-04T08:35:02.000Z', 'TransID': 409394, 'Venue_ID': 1, 'Venue_Name': 'Site 1', 'Location_Number': 5, 'Location_Name': 'PHILS BAR', 'POS_Terminal_Number': 41, 'POS_Terminal_Description': 'PHILS BAR 1', 'TenderDescription': 'DIRECT DEPOSIT', 'SalesAmount': 0, 'BankingAmount': 730, 'Customer_Code': 'ROHFY25147', 'Customer_LastName': 'GEORGIE MITCHELL', 'Customer_FirstName': '', 'Customer_Type_Description': 'FUNCTION ACCOUNTS', 'SalesID': 1370556, 'Customer_Type_Code': 98, 'Func_Sales_Id': 1370556, 'Covers': 0}, {'TransactionDate': '2025-04-04T08:36:10.000Z', 'TransID': 409395, 'Venue_ID': 1, 'Venue_Name': 'Site 1', 'Location_Number': 5, 'Location_Name': 'PHILS BAR', 'POS_Terminal_Number': 41, 'POS_Terminal_Description': 'PHILS BAR 1', 'TenderDescription': 'DIRECT DEPOSIT', 'SalesAmount': 0, 'BankingAmount': 2160, 'Customer_Code': 'ROHFY25160', 'Customer_LastName': 'SCOTS ROWING', 'Customer_FirstName': '', 'Customer_Type_Description': 'FUNCTION ACCOUNTS', 'SalesID': 1370557, 'Customer_Type_Code': 98, 'Func_Sales_Id': 1370557, 'Covers': 0}]}
+
+
+
+
+"""
+#from json content import speicific keys and its values.
+import json
+data = json.loads(content)
+keys = ['TransactionDate', 'TransID', 'TenderDescription', 'SalesAmount', 'BankingAmount']  # Example keys to extract
+for key in keys:
+    if key in data:
+        print(f"{key}: {data[key]}")
+    else:
+        print(f"{key} not found in the JSON data.")
+for key, value in data.items():
+    print(f"{key}: {value}")
+"""
+'''
+# Convert JSON to DataFrame
+import pandas as pd
+data = json.loads(content)
+df = pd.json_normalize(data)
+print("DataFrame:")
+print(df)
+# Preview all available columns to understand the structure
+print("\n🔍 Available Columns:")
+'''
