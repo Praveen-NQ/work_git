@@ -6,7 +6,7 @@ from google.cloud import storage
 # Auth setup
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/apple/.config/gcloud/application_default_credentials.json"
 
-id = '2'
+id = '10'
 # Output path using f-string
 output_file = f'/Users/apple/Documents/project/work_git/quantaco_testing/202504_{id}.csv'
 
@@ -15,7 +15,7 @@ client = storage.Client()
 bucket = client.get_bucket('idealpos-upload-payments')
 
 # Prefix to filter files (adjust if needed)
-date_prefix = f'{id}/2025-04'  # Use f-string here too
+date_prefix = f'{id}/2025-04-01'  # Use f-string here too
 blobs = bucket.list_blobs(prefix=date_prefix)
 
 # List to store all records
@@ -34,11 +34,11 @@ for blob in blobs:
             records = data.get("data", [])
 
             if records:
+                # Add VenueName to each record
                 for record in records:
                     record["VenueName"] = venue_name
-                    # Filter records where SalesAmount != BankingAmount
-                    if record.get("SalesAmount") != record.get("BankingAmount"):
-                        all_records.append(record)
+
+                all_records.extend(records)
                 print(f"✅ Added {len(records)} records from {blob.name}")
             else:
                 print(f"⚠️ No data found in {blob.name}")
@@ -50,7 +50,7 @@ for blob in blobs:
 df = pd.DataFrame(all_records)
 
 # Select required columns including VenueName
-required_cols = ["Venue_ID", "TransactionDate", "TransID", "POS_Terminal_Description", "TenderDescription", "Customer_Type_Description", "SalesAmount", "BankingAmount", "VenueName"]
+required_cols = ["Venue_ID", "TransactionDate", "TransID","POS_Terminal_Description", "TenderDescription","Customer_Type_Description", "SalesAmount", "BankingAmount"]
 existing_cols = [col for col in required_cols if col in df.columns]
 df_filtered = df[existing_cols]
 
