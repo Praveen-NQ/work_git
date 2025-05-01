@@ -1,0 +1,7 @@
+30/04/25:
+on the bug ticket https://quantaco.atlassian.net/browse/QP-7957 Can we do an analysis across all our Idealpos services (payments) ?, to check and find all the cases where BankingAmount > SalesAmount by processing the files from our GCS buckets (1 month of data for each service)
+
+thought process : for each file from idealpos for month of april as Prefix need to do some changes in "FetchData_json_files.py" code.
+
+where it does for each service id it reads each file for the current month : idealpos-upload-payments/$service_id/prefix_currentmonth_.json
+and check if where BankingAmount > SalesAmount if found print file name into file.
