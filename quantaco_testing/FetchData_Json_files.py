@@ -1,12 +1,12 @@
 import os
 import json
-import pandas as pd
+import pandas as pd # type: ignore
 from google.cloud import storage
 
 # Auth setup
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/apple/.config/gcloud/application_default_credentials.json"
 
-id = '2'
+id = '116'
 output_file = f'/Users/apple/Documents/project/work_git/quantaco_testing/202504_{id}.csv'
 
 # GCS client setup
