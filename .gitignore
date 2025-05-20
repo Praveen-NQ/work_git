@@ -7,4 +7,4 @@ terraform.tfstate*
 *.csv
 .DS_Store*
 .xls*
-.xlsx
+*.xlsx
