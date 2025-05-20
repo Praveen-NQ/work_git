@@ -6,4 +6,9 @@
 terraform.tfstate*
 *.csv
 .DS_Store*
+<<<<<<< HEAD
 .xls*
+=======
+.xls*
+*.xlsx
+>>>>>>> c5e0323847f35cf9711d94cbea5229a77f2d8084
