@@ -6,15 +6,15 @@ from google.cloud import storage
 # Auth setup
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/apple/.config/gcloud/application_default_credentials.json"
 
-id = '116'
+id = '128'
 output_file = f'/Users/apple/Documents/project/work_git/quantaco_testing/202504_{id}.csv'
 
 # GCS client setup
 client = storage.Client()
-bucket = client.get_bucket('idealpos-upload-payments')
+bucket = client.get_bucket('bepoz')
 
 # Prefix to filter files
-date_prefix = f'{id}/2025-04'
+date_prefix = f'{id}/Southern Hotel Berry_20250427'
 blobs = bucket.list_blobs(prefix=date_prefix)
 
 all_records = []
